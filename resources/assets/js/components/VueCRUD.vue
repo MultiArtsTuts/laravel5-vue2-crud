@@ -92,10 +92,13 @@ export default {
 
 
             deleteItem: function(item){
-              this.$http.delete(this.apiDomain+'/vueitems/'+item.id).then((response) => {
-                  this.changePage(this.pagination.current_page);
-                  toastr.success('Item Deleted Successfully.', 'Success Alert', {timeOut: 5000});
-              });
+              let ok = confirm("Delete it?");
+              if(ok){
+                  this.$http.delete(this.apiDomain+'/vueitems/'+item.id).then((response) => {
+                      this.changePage(this.pagination.current_page);
+                      toastr.success('Item Deleted Successfully.', 'Success Alert', {timeOut: 5000});
+                  });
+               }
             },
 
 
